@@ -11,6 +11,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author riversking
+ */
 public class AuthExceptionEntryPoint implements AuthenticationEntryPoint {
     /**
      * token错误时进入到这里
