@@ -27,7 +27,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
             map.put("code", "400");
             map.put("message", accessDeniedException.getMessage());
             map.put("data", "");
-            map.put("timestamp", String.valueOf(new Date().getTime()));
+            map.put("timestamp", String.valueOf(System.currentTimeMillis()));
             response.setContentType("application/json");
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.getWriter().write(objectMapper.writeValueAsString(map));
