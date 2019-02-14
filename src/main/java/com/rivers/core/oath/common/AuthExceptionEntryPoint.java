@@ -15,20 +15,21 @@ import java.util.Map;
  * @author riversking
  */
 public class AuthExceptionEntryPoint implements AuthenticationEntryPoint {
+
     /**
      * token错误时进入到这里
+     *
      * @param request
      * @param response
      * @param authException
      * @throws ServletException
      */
-
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
                          AuthenticationException authException)
             throws ServletException {
 
-        Map map = new HashMap();
+        Map<String, Object> map = new HashMap<>(16);
         map.put("code", 401);
         map.put("message", authException.getMessage());
         map.put("data", "");

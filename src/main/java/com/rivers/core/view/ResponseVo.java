@@ -5,9 +5,14 @@ public class ResponseVo {
     private String code;
     private Object rsp;
 
-    protected ResponseVo(final String code, String msg, Object rsp) {
-        this.msg = msg;
+    protected ResponseVo(final String code, String msg) {
         this.code = code;
+        this.msg = msg;
+    }
+
+    protected ResponseVo(final String code, String msg, Object rsp) {
+        this.code = code;
+        this.msg = msg;
         this.rsp = rsp;
     }
 
@@ -36,15 +41,15 @@ public class ResponseVo {
     }
 
     public static ResponseVo ok() {
-        return new ResponseVo("0", (String)null, (Object)null);
+        return new ResponseVo("0", (String) null, (Object) null);
     }
 
     public static ResponseVo ok(Object rsp) {
-        return new ResponseVo("0", (String)null, rsp);
+        return new ResponseVo("0", "查询成功", rsp);
     }
 
     public static ResponseVo fail(String errorCode, String message) {
-        return new ResponseVo(errorCode, message, (Object)null);
+        return new ResponseVo(errorCode, message);
     }
 
     public static ResponseVo fail(String errorCode, String message, Object rsp) {
@@ -52,6 +57,6 @@ public class ResponseVo {
     }
 
     public static ResponseVo systemFail(String message) {
-        return new ResponseVo("500", message, (Object)null);
+        return new ResponseVo("500", message, (Object) null);
     }
 }
