@@ -1,62 +1,93 @@
 package com.rivers.core.view;
 
-public class ResponseVo {
-    private String msg;
-    private String code;
-    private Object rsp;
+import java.sql.Timestamp;
 
-    protected ResponseVo(final String code, String msg) {
+import org.springframework.util.StringUtils;
+
+public class ResponseVo {
+    private String message;
+    private String code;
+    private Timestamp timestamp;
+    private boolean success;
+    private Object datas;
+    private Object requestValue;
+
+    protected ResponseVo(boolean success, String code, String message, Object datas) {
         this.code = code;
-        this.msg = msg;
+        this.message = message;
+        this.success = success;
+        this.datas = datas;
+        this.timestamp = new Timestamp(System.currentTimeMillis());
     }
 
-    protected ResponseVo(final String code, String msg, Object rsp) {
+    protected ResponseVo(boolean success, String code, String message) {
         this.code = code;
-        this.msg = msg;
-        this.rsp = rsp;
+        this.message = message;
+        this.success = success;
+        this.timestamp = new Timestamp(System.currentTimeMillis());
     }
 
     public String getCode() {
-        return this.code;
+        return this.isSuccess() ? "0" : this.code;
     }
 
     public void setCode(String code) {
         this.code = code;
     }
 
-    public Object getRsp() {
-        return this.rsp;
+    public Timestamp getTimestamp() {
+        return this.timestamp;
     }
 
-    public void setRsp(Object rsp) {
-        this.rsp = rsp;
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
-    public String getMsg() {
-        return this.msg;
+    public boolean isSuccess() {
+        return this.success;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public Object getDatas() {
+        return this.datas;
+    }
+
+    public void setDatas(Object datas) {
+        this.datas = datas;
+    }
+
+    public Object getRequestValue() {
+        return this.requestValue;
+    }
+
+    public void setRequestValue(Object requestValue) {
+        this.requestValue = requestValue;
+    }
+
+    public String getMessage() {
+        return StringUtils.isEmpty(this.message) ? (this.isSuccess() ? "请求成功" : this.message) : this.message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public static ResponseVo ok() {
-        return new ResponseVo("0", (String) null, (Object) null);
+        return new ResponseVo(true, (String) null, (String) null);
     }
 
-    public static ResponseVo ok(Object rsp) {
-        return new ResponseVo("0", "查询成功", rsp);
+    public static ResponseVo ok(Object datas) {
+        return new ResponseVo(true, (String) null, (String) null, datas);
     }
 
     public static ResponseVo fail(String errorCode, String message) {
-        return new ResponseVo(errorCode, message);
+        return new ResponseVo(false, errorCode, message);
     }
 
-    public static ResponseVo fail(String errorCode, String message, Object rsp) {
-        return new ResponseVo(errorCode, message, rsp);
-    }
-
-    public static ResponseVo systemFail(String message) {
-        return new ResponseVo("500", message, (Object) null);
+    public static ResponseVo fail(String errorCode, String message, Object datas) {
+        return new ResponseVo(false, errorCode, message, datas);
     }
 }
