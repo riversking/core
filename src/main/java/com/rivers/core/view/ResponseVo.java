@@ -1,8 +1,8 @@
 package com.rivers.core.view;
 
-import java.sql.Timestamp;
-
 import org.springframework.util.StringUtils;
+
+import java.sql.Timestamp;
 
 public class ResponseVo {
     private String message;
@@ -10,7 +10,6 @@ public class ResponseVo {
     private Timestamp timestamp;
     private boolean success;
     private Object datas;
-    private Object requestValue;
 
     protected ResponseVo(boolean success, String code, String message, Object datas) {
         this.code = code;
@@ -57,14 +56,6 @@ public class ResponseVo {
 
     public void setDatas(Object datas) {
         this.datas = datas;
-    }
-
-    public Object getRequestValue() {
-        return this.requestValue;
-    }
-
-    public void setRequestValue(Object requestValue) {
-        this.requestValue = requestValue;
     }
 
     public String getMessage() {
