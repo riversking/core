@@ -19,10 +19,10 @@ public class AuthExceptionEntryPoint implements AuthenticationEntryPoint {
     /**
      * token错误时进入到这里
      *
-     * @param request
-     * @param response
-     * @param authException
-     * @throws ServletException
+     * @param request request
+     * @param response response
+     * @param authException authException
+     * @throws ServletException ServletException
      */
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
