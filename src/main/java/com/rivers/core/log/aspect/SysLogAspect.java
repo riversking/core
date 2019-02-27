@@ -7,6 +7,8 @@ import com.rivers.core.util.SysLogUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author riversking
@@ -14,11 +16,13 @@ import org.aspectj.lang.annotation.Aspect;
 @Aspect
 public class SysLogAspect {
 
+    private static final Logger logger = LoggerFactory.getLogger(SpringContextHolder.class);
+
     @Around("@annotation(sysLog)")
     public Object around(ProceedingJoinPoint point, SysLog sysLog) throws Throwable {
         String strClassName = point.getTarget().getClass().getName();
         String strMethodName = point.getSignature().getName();
-//        log.debug("[类名]:{},[方法]:{}", strClassName, strMethodName);
+        logger.debug("[类名]:{},[方法]:{}", strClassName, strMethodName);
 
         com.rivers.core.log.entity.SysLog logVo = SysLogUtils.getSysLog();
         logVo.setTitle(sysLog.value());
