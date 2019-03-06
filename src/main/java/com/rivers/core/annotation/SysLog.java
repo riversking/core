@@ -1,4 +1,4 @@
-package com.rivers.core.log.annotation;
+package com.rivers.core.annotation;
 
 import java.lang.annotation.*;
 

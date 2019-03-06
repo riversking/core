@@ -1,6 +1,6 @@
 package com.rivers.core.log.aspect;
 
-import com.rivers.core.log.annotation.SysLog;
+import com.rivers.core.annotation.SysLog;
 import com.rivers.core.log.event.SysLogEvent;
 import com.rivers.core.util.SpringContextHolder;
 import com.rivers.core.util.SysLogUtils;
