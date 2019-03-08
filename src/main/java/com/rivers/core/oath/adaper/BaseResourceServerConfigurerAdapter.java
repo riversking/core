@@ -1,4 +1,4 @@
-package com.rivers.core.oath.config;
+package com.rivers.core.oath.adaper;
 
 import com.rivers.core.config.FilterIgnorePropertiesConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,6 @@ public abstract class BaseResourceServerConfigurerAdapter extends ResourceServer
     @Override
     public void configure(HttpSecurity http) throws Exception{
         //允许使用iframe 嵌套，避免swagger-ui 不被加载的问题
-        http.headers().frameOptions().disable();
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>
                 .ExpressionInterceptUrlRegistry registry = http
                 .authorizeRequests();
