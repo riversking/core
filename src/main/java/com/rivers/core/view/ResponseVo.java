@@ -9,13 +9,13 @@ public class ResponseVo {
     private String code;
     private Timestamp timestamp;
     private boolean success;
-    private Object datas;
+    private Object data;
 
-    protected ResponseVo(boolean success, String code, String message, Object datas) {
+    protected ResponseVo(boolean success, String code, String message, Object data) {
         this.code = code;
         this.message = message;
         this.success = success;
-        this.datas = datas;
+        this.data = data;
         this.timestamp = new Timestamp(System.currentTimeMillis());
     }
 
@@ -50,12 +50,12 @@ public class ResponseVo {
         this.success = success;
     }
 
-    public Object getDatas() {
-        return this.datas;
+    public Object getData() {
+        return data;
     }
 
-    public void setDatas(Object datas) {
-        this.datas = datas;
+    public void setData(Object data) {
+        this.data = data;
     }
 
     public String getMessage() {
@@ -70,15 +70,15 @@ public class ResponseVo {
         return new ResponseVo(true, (String) null, (String) null);
     }
 
-    public static ResponseVo ok(Object datas) {
-        return new ResponseVo(true, (String) null, (String) null, datas);
+    public static ResponseVo ok(Object data) {
+        return new ResponseVo(true, (String) null, (String) null, data);
     }
 
     public static ResponseVo fail(String errorCode, String message) {
         return new ResponseVo(false, errorCode, message);
     }
 
-    public static ResponseVo fail(String errorCode, String message, Object datas) {
-        return new ResponseVo(false, errorCode, message, datas);
+    public static ResponseVo fail(String errorCode, String message, Object data) {
+        return new ResponseVo(false, errorCode, message, data);
     }
 }
