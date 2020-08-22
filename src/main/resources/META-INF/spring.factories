@@ -1,5 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.rivers.core.log.LogAutoConfiguration,\
-  com.rivers.core.oath.component.SecurityInnerAspect,\
   com.rivers.core.config.RequestInterceptorConfig,\
-  com.rivers.core.config.FilterIgnorePropertiesConfig
+  com.rivers.core.config.ProtobufHttpMessageConverter,\
+  com.rivers.core.config.FeignConfiguration

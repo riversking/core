@@ -3,7 +3,6 @@ package com.rivers.core.log.aspect;
 import com.rivers.core.annotation.SysLog;
 import com.rivers.core.log.event.SysLogEvent;
 import com.rivers.core.util.SpringContextHolder;
-import com.rivers.core.util.SysLogUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -24,14 +23,14 @@ public class SysLogAspect {
         String strMethodName = point.getSignature().getName();
         logger.debug("[类名]:{},[方法]:{}", strClassName, strMethodName);
 
-        com.rivers.core.log.entity.SysLog logVo = SysLogUtils.getSysLog();
-        logVo.setTitle(sysLog.value());
-        // 发送异步日志事件
-        Long startTime = System.currentTimeMillis();
+//        com.rivers.core.log.entity.SysLog logVo = SysLogUtils.getSysLog();
+//        logVo.setTitle(sysLog.value());
+//        // 发送异步日志事件
+//        Long startTime = System.currentTimeMillis();
         Object obj = point.proceed();
-        Long endTime = System.currentTimeMillis();
-        logVo.setTime(endTime - startTime);
-        SpringContextHolder.publishEvent(new SysLogEvent(logVo));
+//        Long endTime = System.currentTimeMillis();
+//        logVo.setTime(endTime - startTime);
+        SpringContextHolder.publishEvent(new SysLogEvent(null));
         return obj;
     }
 

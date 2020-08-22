@@ -19,7 +19,7 @@ import java.util.*;
 @Log4j2
 public class RequestInterceptorConfig implements RequestInterceptor {
 
-    private static String TOKEN_HEADER = "authorization";
+    private static String TOKEN_HEADER = "Authorization";
 
     @Override
     public void apply(RequestTemplate template) {

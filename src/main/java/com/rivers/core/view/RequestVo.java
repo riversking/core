@@ -8,6 +8,8 @@ public class RequestVo<T> {
     private String accessToken;
     private T param;
     private Object clientInfo;
+    private Integer id;
+    private String userId;
 
     public RequestVo() {
     }
@@ -66,5 +68,21 @@ public class RequestVo<T> {
 
     public void setClientInfo(Object clientInfo) {
         this.clientInfo = clientInfo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
